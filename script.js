@@ -1,3 +1,6 @@
+let player = 0;
+let computer = 0;
+
 function getRandomInt() {
     return Math.floor(Math.random() * 3);
 }
@@ -16,8 +19,12 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === 'rock' && computerSelection === 'scissors') ||
         (playerSelection === 'scissors' && computerSelection === 'paper') ||
         (playerSelection === 'paper' && computerSelection === 'rock')
-    ) return `You win! ${playerSelection} beats ${computerSelection}`
+    ) {
+        player += 1;
+        return `You win! ${playerSelection} beats ${computerSelection}`
+    }
     else {
+        computer += 1;
         return `You lose! ${computerSelection} beats ${playerSelection}`
     }
 }
@@ -31,19 +38,6 @@ container.addEventListener('click', function (e) {
         const playerMove = buttonText.toLowerCase();
         const computerMove = getComputerChoice();
         const result = playRound(playerMove, computerMove)
-        console.log(result)
     }
 })
 
-// const play = document.getElementById('play')
-
-// play.addEventListener('click', function () {
-//     const computerMove = getComputerChoice();
-//     const playerMove = prompt('Enter you move: ').toLocaleLowerCase();
-//     if (!['rock', 'paper', 'scissors'].includes(playerMove)) {
-//         alert('Invalid choice. Please choose rock, paper, or scissors.');
-//         return;
-//     }
-//     const result = playRound(playerMove, computerMove);
-//     alert(result)
-// })
