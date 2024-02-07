@@ -22,15 +22,28 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const play = document.getElementById('play')
 
-play.addEventListener('click', function () {
-    const computerMove = getComputerChoice();
-    const playerMove = prompt('Enter you move: ').toLocaleLowerCase();
-    if (!['rock', 'paper', 'scissors'].includes(playerMove)) {
-        alert('Invalid choice. Please choose rock, paper, or scissors.');
-        return;
+const container = document.body;
+
+container.addEventListener('click', function (e) {
+    if (e.target.classList.contains('button')) {
+        const buttonText = e.target.textContent;
+        const playerMove = buttonText.toLowerCase();
+        const computerMove = getComputerChoice();
+        const result = playRound(playerMove, computerMove)
+        console.log(result)
     }
-    const result = playRound(playerMove, computerMove);
-    alert(result)
 })
+
+// const play = document.getElementById('play')
+
+// play.addEventListener('click', function () {
+//     const computerMove = getComputerChoice();
+//     const playerMove = prompt('Enter you move: ').toLocaleLowerCase();
+//     if (!['rock', 'paper', 'scissors'].includes(playerMove)) {
+//         alert('Invalid choice. Please choose rock, paper, or scissors.');
+//         return;
+//     }
+//     const result = playRound(playerMove, computerMove);
+//     alert(result)
+// })
